@@ -53,7 +53,10 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
                 .findFirst();
     }
 
-
+    @Override
+    public List<T> findAll() {
+        return dataList;
+    }
     //delete
 
     @Override
