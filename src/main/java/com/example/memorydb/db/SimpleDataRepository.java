@@ -5,6 +5,7 @@ import com.example.memorydb.entity.Entity;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 //얘를 구현 받으면 구현 해도 되고, 안해도 됨
 abstract public class SimpleDataRepository <T extends Entity, ID extends Long> implements DataRepository<T, ID>{
@@ -40,5 +41,14 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
             dataList.add(data);
         }
         return  data;
+    }
+
+    //read
+    public Optional <T> findById( ID id){
+        return dataList.stream()
+                .filter(it -> {
+                    return ( it.getId().equals(id));
+                })
+                .findFirst();
     }
 }
