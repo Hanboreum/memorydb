@@ -2,10 +2,8 @@ package com.example.memorydb.db;
 
 import com.example.memorydb.entity.Entity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 //얘를 구현 받으면 구현 해도 되고, 안해도 됨
 abstract public class SimpleDataRepository <T extends Entity, ID extends Long> implements DataRepository<T, ID>{
@@ -16,6 +14,12 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
     private List<T> dataList = new ArrayList<T>();
     private static long index = 0;
 
+    private Comparator<T> sort = new Comparator<T>() {
+        @Override
+        public int compare(T o1, T o2) {
+            return Long.compare( o1.getId(), o2.getId());
+        }
+    };
     //create,update
 
     @Override
@@ -55,7 +59,9 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
 
     @Override
     public List<T> findAll() {
-        return dataList;
+        return dataList.stream()
+                .sorted(sort)
+                .collect(Collectors.toList());
     }
     //delete
 
