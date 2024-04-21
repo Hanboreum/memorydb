@@ -44,11 +44,28 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
     }
 
     //read
-    public Optional <T> findById( ID id){
+    @Override
+    public Optional <T> findById( ID id){ //데이터가 있을 수도, 없을 수도 있기 때문에 Optional
         return dataList.stream()
                 .filter(it -> {
                     return ( it.getId().equals(id));
                 })
                 .findFirst();
+    }
+
+
+    //delete
+
+    @Override
+    public void delete(ID id) {
+        var deleteEntity = dataList.stream()
+                .filter(it -> {
+                    return ( it.getId().equals(id));
+                })
+                .findFirst();
+
+        if(deleteEntity.isPresent()){
+            dataList.remove(deleteEntity);
+        }
     }
 }
