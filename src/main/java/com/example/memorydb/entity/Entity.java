@@ -1,13 +1,11 @@
 package com.example.memorydb.entity;
 //구현
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 public abstract class Entity implements PrimaryKey{
 
+    @Getter
+    @Setter
     private Long ig;
 }
