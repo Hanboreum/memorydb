@@ -3,10 +3,10 @@ package com.example.memorydb.user.controller;
 import com.example.memorydb.user.model.UserEntity;
 import com.example.memorydb.user.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController //http요청 들어오는 내용을 처맇고, 응답을 처리하는 영역이다.
 @RequestMapping("/api/user")
@@ -23,4 +23,18 @@ public class UserApiController {
     public List<UserEntity> findAll(){
         return userService.findAll();
     }//findall
+
+    @DeleteMapping("/id/{id}")
+    public void delete(@PathVariable Long id){
+         userService.delete(id);
+    } //delete
+    @GetMapping("/id/{id}")
+    public UserEntity findOne(@PathVariable long id){
+        var response =  userService.findById(id);
+        return response.get();
+    }
+    @GetMapping("/score")//http://localhost:8080/api/user/score?score=70
+    public List<UserEntity> filterScore(@RequestParam int score){
+            return  userService.filterScore(score);
+    }
 }
