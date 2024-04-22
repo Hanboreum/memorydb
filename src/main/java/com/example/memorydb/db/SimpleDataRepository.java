@@ -37,7 +37,7 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
                 .findFirst();
 
         if(prevData.isPresent()){ //있는 경우
-            dataList.remove(prevData);//삭제
+            dataList.remove(prevData.get());//삭제
             dataList.add(data);// 삽입
         }else{ //id 없는 경우
             index ++;
@@ -74,7 +74,7 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
                 .findFirst();
 
         if(deleteEntity.isPresent()){
-            dataList.remove(deleteEntity);
+            dataList.remove(deleteEntity.get());
         }
     }
 }
