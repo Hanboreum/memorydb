@@ -11,7 +11,7 @@ abstract public class SimpleDataRepository <T extends Entity, ID extends Long> i
     //generic 타입은 반드시 entity룰 상속받은 것만 들어올 수 있음
 
 
-    private List<T> dataList = new ArrayList<T>();
+    private List<T> dataList = new ArrayList<T>(); //userentity가 들어간다.
     private static long index = 0;
 
     private Comparator<T> sort = new Comparator<T>() {
