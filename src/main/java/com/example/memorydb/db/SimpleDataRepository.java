@@ -4,7 +4,7 @@ import com.example.memorydb.entity.Entity;
 
 import java.util.*;
 import java.util.stream.Collectors;
-
+// 구현체
 //얘를 구현 받으면 구현 해도 되고, 안해도 됨
 abstract public class SimpleDataRepository <T extends Entity, ID extends Long> implements DataRepository<T, ID>{
     //extends entity 통해 상속받은 것들에게 ?
