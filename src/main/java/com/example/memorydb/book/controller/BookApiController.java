@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/book")
@@ -21,6 +22,15 @@ public class BookApiController {
    @PostMapping("")
    public BookEntity create( @RequestBody BookEntity book){
        return bookService.create(book);
+   }
+   @DeleteMapping("/id/{id}")
+    public void delete( @PathVariable long id){
+       bookService.delete(id);
+   }
+   @GetMapping("/id/{id}")
+    public Optional<BookEntity> findOne(@PathVariable long id){
+       var response = bookService.findById(id);
+       return response;
    }
 
 }

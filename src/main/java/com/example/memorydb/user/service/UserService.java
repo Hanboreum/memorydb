@@ -23,7 +23,7 @@ public class UserService {
         return userRepository.findAll();
     } //find all
 
-    public void delete(Long id){
+    public void delete(long id){
         userRepository.delete( id);
     }
     public Optional<UserEntity> findById(Long id){

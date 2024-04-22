@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,19 +17,28 @@ public class BookService {
     private final BookRepository bookRepository;
 
     //create. update
-    public BookEntity create(BookEntity book){
+    public BookEntity create(BookEntity book) {
         return bookRepository.save(book);
     }
+
     //all
-    public List<BookEntity> findAll (){
+    public List<BookEntity> findAll() {
         return bookRepository.findAll();
     }
+
     //delete
-   // public BookEntity delete(Long id){
-     //   return BookRepository.delete(id);
+    public void delete(long id) {
+         bookRepository.delete(id);
     }
     //findone
+    public Optional<BookEntity> findById(long id){
+        return bookRepository.findById(id);
+    }
 
+}
+
+
+//특정 카테고리 출ㄹ력
 
 /*
 버전 1.
