@@ -7,5 +7,5 @@ public abstract class Entity implements PrimaryKey{
 
     @Getter
     @Setter
-    private Long ig;
+    private Long id;
 }
