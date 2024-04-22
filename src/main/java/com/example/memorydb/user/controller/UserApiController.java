@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller //http요청 들어오는 내용을 처맇고, 응답을 처리하는 영역이다.
+@RestController //http요청 들어오는 내용을 처맇고, 응답을 처리하는 영역이다.
 @RequestMapping("/api/user")
 @RequiredArgsConstructor //생성자 ㅁ메서드로 채워줌. 유저 서비스를 스프링으로부터 주입 받을 수 있음
 public class UserApiController {
