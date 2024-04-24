@@ -11,11 +11,11 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     //해당 점수보다 높은 사용자
     // select * from user where score >= []
     //findAll = 모두 찾겠다 /By 뒤로는 where절/ Scores = score 필드에서 / GreaterThanEqual 크거나 같은 >=
-    public List<UserEntity> findAllByScoreGreaterThanEqual(int score);
+     List<UserEntity> findAllByScoreGreaterThanEqual(int score);
 
     //select * from user where score <= [] and score >= [] , 최대점수와 최소 점수 사이
     //GreaterThan 은 int min, LessThan은 int max에 매핑
-    public List<UserEntity> findByScoreGreaterThanEqualAndScoreLessThanEqual(int min, int max);
+     List<UserEntity> findByScoreGreaterThanEqualAndScoreLessThanEqual(int min, int max);
 
 
 }
