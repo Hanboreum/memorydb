@@ -2,6 +2,8 @@ package com.example.memorydb.user.db;
 
 import com.example.memorydb.user.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
 import java.util.List;
 
 //어떤 entity를 다룰 것인지 제네릭으로 표시, 각각의 데이터는 long타입의 아이디를 갖는다.
@@ -17,5 +19,8 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     //GreaterThan 은 int min, LessThan은 int max에 매핑
      List<UserEntity> findByScoreGreaterThanEqualAndScoreLessThanEqual(int min, int max);
 
-
+     @Query(value = " select * from user as u where u.score >= ?1 AND u.score <= ?2"
+     , nativeQuery = true
+     ) //jpql
+     List<UserEntity> score ( int min, int max);
 }
