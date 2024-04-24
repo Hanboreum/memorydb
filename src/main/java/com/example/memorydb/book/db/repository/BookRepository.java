@@ -10,5 +10,6 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<BookEntity, Long> {
     //id는 long타입
     List<BookEntity>findByAmountGreaterThanEqualAndAmountLessThanEqual(int min, int max);
+    List<BookEntity>findByCategoryLike(String category);
 }
 

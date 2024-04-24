@@ -36,5 +36,9 @@ public class BookApiController {
     public List<BookEntity> filterAmount(@RequestParam int min, @RequestParam int max){
        return bookService.filterAmount(min, max);
    }
+   @GetMapping("/category")
+    public List<BookEntity> filterCategory(@RequestParam String category){
+       return bookService.filterCategory(category);
+   }
 
 }

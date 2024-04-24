@@ -37,6 +37,9 @@ public class BookService {
     public List<BookEntity> filterAmount(int min, int max){
         return bookRepository.findByAmountGreaterThanEqualAndAmountLessThanEqual(min, max);
     }
+    public List<BookEntity> filterCategory(String category){
+        return bookRepository.findByCategoryLike(category);
+    }
 
 }
 
