@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController //http요청 들어오는 내용을 처맇고, 응답을 처리하는 영역이다.
 @RequestMapping("/api/user")
@@ -25,8 +24,8 @@ public class UserApiController {
     }//findall
 
     @DeleteMapping("/id/{id}")
-    public void delete(@PathVariable Long id){
-         //userService.delete(id);
+    public void delete(@PathVariable UserEntity id){ //Long -> UserEn
+         userService.delete(id);
     } //delete
     @GetMapping("/id/{id}")
     public UserEntity findOne(@PathVariable long id){
