@@ -27,7 +27,7 @@ public class BookService {
     }
 
     //delete
-    public void delete(long id) {
+    public void delete(BookEntity id) {
          bookRepository.delete(id);
     }
     //findone
