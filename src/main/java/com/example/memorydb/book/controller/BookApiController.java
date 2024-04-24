@@ -24,7 +24,7 @@ public class BookApiController {
        return bookService.create(book);
    }
    @DeleteMapping("/id/{id}")
-    public void delete( @PathVariable long id){
+    public void delete( @PathVariable BookEntity id){
        bookService.delete(id);
    }
    @GetMapping("/id/{id}")
