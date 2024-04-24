@@ -3,6 +3,7 @@ package com.example.memorydb.user.db;
 import com.example.memorydb.user.model.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -17,10 +18,12 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     //select * from user where score <= [] and score >= [] , 최대점수와 최소 점수 사이
     //GreaterThan 은 int min, LessThan은 int max에 매핑
-     List<UserEntity> findByScoreGreaterThanEqualAndScoreLessThanEqual(int min, int max);
+     List<UserEntity> findByScoreGreaterThanEqualAndScoreLessThanEqual(int min, int max); //query method 사용 방식
 
-     @Query(value = " select * from user as u where u.score >= ?1 AND u.score <= ?2"
+     @Query(value = " select * from user as u where u.score >= :min AND u.score <= :max"
      , nativeQuery = true
      ) //jpql
-     List<UserEntity> score ( int min, int max);
-}
+     List<UserEntity> score (@Param(value = "min") int min,
+                             @Param(value = "max") int max);
+}       //순서대로 매칭하는 것이 아닌 @Param 사용해 이름에 매칭, 이것을 named parameter 라고 한다.
+//파라미터 바인딩
