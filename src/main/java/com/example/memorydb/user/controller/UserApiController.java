@@ -40,6 +40,8 @@ public class UserApiController {
     public List<UserEntity> filterScore( @RequestParam int min, @RequestParam int max){
         return userService.filterScore(min, max);
     }
-
-
+    @GetMapping("/name")
+    public List<UserEntity> filterName(@RequestParam String name){
+        return userService.filterName(name);
+    }
 }

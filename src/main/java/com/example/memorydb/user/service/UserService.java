@@ -37,4 +37,7 @@ public class UserService {
         //return userRepository.score(min, max);
         return userRepository.findByScoreGreaterThanEqualAndScoreLessThanEqual(min, max);
     }
+    public List<UserEntity> filterName(String name){
+        return userRepository.findAllByNameLike(name);
+    }
 }

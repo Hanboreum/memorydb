@@ -27,5 +27,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
                              @Param(value = "max") int max);
     //순서대로 매칭하는 것이 아닌 @Param 사용해 이름에 매칭, 이것을 named parameter 라고 한다.
     //파라미터 바인딩
+    List<UserEntity>findAllByNameLike(String name);
     
 }
