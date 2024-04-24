@@ -32,5 +32,9 @@ public class BookApiController {
        var response = bookService.findById(id);
        return response;
    }
+   @GetMapping("/min_max") //http://localhost:8080/api/book/min_max?min=20000&max=35000
+    public List<BookEntity> filterAmount(@RequestParam int min, @RequestParam int max){
+       return bookService.filterAmount(min, max);
+   }
 
 }

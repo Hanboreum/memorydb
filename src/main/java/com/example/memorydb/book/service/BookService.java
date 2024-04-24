@@ -34,6 +34,9 @@ public class BookService {
     public Optional<BookEntity> findById(long id){
         return bookRepository.findById(id);
     }
+    public List<BookEntity> filterAmount(int min, int max){
+        return bookRepository.findByAmountGreaterThanEqualAndAmountLessThanEqual(min, max);
+    }
 
 }
 
