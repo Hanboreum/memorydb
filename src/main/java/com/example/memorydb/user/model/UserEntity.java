@@ -17,8 +17,8 @@ import java.math.BigDecimal;
 @Entity(name = "user") //db와 매핑. user테이블과 연결
 public class UserEntity {
 
-    @Id //Ai 때문에
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //어떻게 생성, 관리 되는지
+    @Id //pk에 해당하는
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //pk값이 어떻게 생성, 관리 되는지(idnetity = db 책임)
     private Long id;
     private String name;
     private int score;
